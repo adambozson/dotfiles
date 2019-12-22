@@ -6,6 +6,7 @@ abbr dc 'docker-compose'
 abbr ds 'docker start'
 
 # Git
+abbr g 'git'
 abbr gs 'git status'
 
 # Conda
