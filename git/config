@@ -1,0 +1,7 @@
+[user]
+	name = Adam Bozson
+	email = adam@bozson.io
+[credential]
+	helper = osxkeychain
+[core]
+	editor = vim
