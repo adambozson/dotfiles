@@ -8,3 +8,6 @@ abbr ds 'docker start'
 # Git
 abbr gs 'git status'
 
+# Conda
+abbr ca 'conda activate'
+
