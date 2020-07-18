@@ -5,3 +5,10 @@
 	helper = osxkeychain
 [core]
 	editor = vim
+[commit]
+	gpgsign = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

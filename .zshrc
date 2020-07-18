@@ -1,6 +1,3 @@
-path=('usr/local/bin' '/usr/local/texlive/2019/bin/x86_64-darwin'  $path)
-export PATH
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
