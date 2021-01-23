@@ -5,6 +5,7 @@ abbr l ls
 abbr w which
 
 # Docker 
+abbr d 'docker'
 abbr dc 'docker-compose'
 abbr ds 'docker start'
 
