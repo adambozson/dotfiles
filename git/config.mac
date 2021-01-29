@@ -14,3 +14,7 @@
 	smudge = git-lfs smudge -- %f
 [pull]
 	ff = only
+[bash]
+	showInformativeStatus = false
+	showDirtyState = true
+	showUntrackedFiles = true
