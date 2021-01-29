@@ -1,6 +1,3 @@
-# Quick ls
-abbr l ls
-
 # Quick which
 abbr w which
 
