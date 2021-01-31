@@ -1,6 +1,7 @@
 if test (arch) = "arm64"
-    eval (/opt/homebrew/bin/brew shellenv)
+    set -g HOMEBREW_PREFIX /opt/homebrew
 else
-    set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+    set -g HOMEBREW_PREFIX /usr/local
 end
 
+eval ($HOMEBREW_PREFIX/bin/brew shellenv)
