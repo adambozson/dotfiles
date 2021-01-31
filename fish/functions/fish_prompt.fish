@@ -27,9 +27,9 @@ function fish_prompt --description "Write out the prompt"
     set -g __fish_git_prompt_char_stagedstate 🚀
     set -g __fish_git_prompt_char_stashstate 🚩
     set -g __fish_git_prompt_char_untrackedfiles 👾
-    set -g __fish_git_prompt_char_upstream_ahead '⬆️ '
-    set -g __fish_git_prompt_char_upstream_behind '⬇️ '
-    set -g __fish_git_prompt_char_upstream_diverged '🔀 '
+    set -g __fish_git_prompt_char_upstream_ahead ' ⬆️ '
+    set -g __fish_git_prompt_char_upstream_behind ' ⬇️ '
+    set -g __fish_git_prompt_char_upstream_diverged ' 🔀 '
     set -g __fish_git_prompt_char_upstream_equal
 
     echo -n -s (set_color $color_cwd) (prompt_pwd) (set_color normal) (fish_git_prompt) "$suffix "
