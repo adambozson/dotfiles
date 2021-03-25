@@ -18,3 +18,5 @@
 	showInformativeStatus = false
 	showDirtyState = true
 	showUntrackedFiles = true
+[init]
+	defaultBranch = main
