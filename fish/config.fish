@@ -5,3 +5,6 @@ else
 end
 
 eval ($HOMEBREW_PREFIX/bin/brew shellenv)
+
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
+
