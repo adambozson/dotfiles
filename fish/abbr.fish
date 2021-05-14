@@ -10,6 +10,7 @@ abbr ds 'docker start'
 abbr g 'git'
 abbr gs 'git status'
 abbr gf 'git fetch'
+abbr gl 'git log --oneline --graph'
 
 # Conda
 abbr ic 'init-conda'
