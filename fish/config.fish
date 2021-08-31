@@ -8,5 +8,9 @@ end
 
 eval ($HOMEBREW_PREFIX/bin/brew shellenv)
 
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
+# If google-cloud-sdk is installed, run its include script
+set -l gc_dir $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk
+if test -e $gc_dir
+    source "$gc_dir/latest/google-cloud-sdk/path.fish.inc"
+end
 
