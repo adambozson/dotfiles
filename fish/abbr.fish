@@ -16,3 +16,7 @@ abbr gl 'git log --oneline --graph'
 abbr ic 'init-conda'
 abbr ca 'conda activate'
 
+# kubectl
+abbr k 'kubectl'
+abbr kg 'kubectl get'
+
