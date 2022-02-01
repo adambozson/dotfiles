@@ -11,6 +11,7 @@ abbr g 'git'
 abbr gs 'git status'
 abbr gf 'git fetch'
 abbr gl 'git log --oneline --graph'
+abbr gsw 'git switch'
 
 # Conda
 abbr ic 'init-conda'
