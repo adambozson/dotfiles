@@ -21,3 +21,6 @@ abbr ca 'conda activate'
 abbr k 'kubectl'
 abbr kg 'kubectl get'
 
+# Terraform
+abbr tf 'terraform'
+
