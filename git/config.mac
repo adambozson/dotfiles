@@ -13,7 +13,7 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 [pull]
-	ff = only
+	rebase = false
 [bash]
 	showInformativeStatus = false
 	showDirtyState = true
