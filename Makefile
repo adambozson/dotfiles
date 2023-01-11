@@ -1,4 +1,4 @@
-all-mac: install-fish install-git-mac install-htop install-hushlogin install-vim
+all-mac: install-fish install-git-mac install-gpg install-htop install-hushlogin install-vim
 
 .PHONY: install-fish
 install-fish:
@@ -16,6 +16,16 @@ install-git-mac:
 .PHONY: uninstall-git
 uninstall-git:
 	rm ~/.gitconfig
+
+.PHONY: install-gpg
+install-gpg:
+	mkdir -p ~/.gnupg
+	cp gpg/*.conf ~/.gnupg/
+	chmod 700 ~/.gnupg
+	gpgconf --kill gpg-agent
+
+.PHONY: uninstall-gpg
+	rm -rf ~/.gnupg
 
 .PHONY: install-htop
 install-htop:
