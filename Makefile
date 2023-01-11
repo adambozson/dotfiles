@@ -3,11 +3,11 @@ all-mac: install-fish install-git-mac install-gpg install-htop install-hushlogin
 .PHONY: install-fish
 install-fish:
 	mkdir -p ~/.config/fish
-	cp -r fish/completions fish/functions fish/abbr.fish fish/config.fish ~/.config/fish/
+	cp -r fish/completions fish/functions fish/conf.d/ fish/config.fish ~/.config/fish/
 
 .PHONY: uninstall-fish
 uninstall-fish:
-	rm -rg ~/.config/fish
+	rm -rf ~/.config/fish
 
 .PHONY: install-git-mac
 install-git-mac:
