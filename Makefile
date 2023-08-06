@@ -1,7 +1,10 @@
 all-mac: install-fish install-git-mac install-gpg install-htop install-hushlogin install-vim
 
+fish/completions/kubectl.fish:
+	$(MAKE) -C fish/completions
+
 .PHONY: install-fish
-install-fish:
+install-fish: fish/completions/kubectl.fish
 	mkdir -p ~/.config/fish
 	cp -r fish/completions fish/functions fish/conf.d/ fish/config.fish ~/.config/fish/
 
