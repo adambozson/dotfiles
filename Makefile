@@ -6,7 +6,7 @@ fish/completions/kubectl.fish:
 .PHONY: install-fish
 install-fish: fish/completions/kubectl.fish
 	mkdir -p ~/.config/fish
-	cp -r fish/completions fish/functions fish/conf.d/ fish/config.fish ~/.config/fish/
+	cp -r fish/completions fish/functions fish/conf.d fish/config.fish ~/.config/fish/
 
 .PHONY: uninstall-fish
 uninstall-fish:
