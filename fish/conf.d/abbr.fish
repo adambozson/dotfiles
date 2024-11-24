@@ -3,11 +3,6 @@
 # Quick which
 abbr w which
 
-# Docker 
-abbr d 'docker'
-abbr dc 'docker-compose'
-abbr ds 'docker start'
-
 # Git
 abbr g 'git'
 abbr gs 'git status'
