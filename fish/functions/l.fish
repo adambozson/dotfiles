@@ -1,3 +1,5 @@
+# ln ~/.config/fish/functions/l.fish
+
 function l --description 'List contents of directory'
     set -l opt -G
             isatty stdout

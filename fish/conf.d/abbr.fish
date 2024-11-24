@@ -1,3 +1,5 @@
+# ln ~/.config/fish/conf.d/abbr.fish
+
 # Quick which
 abbr w which
 

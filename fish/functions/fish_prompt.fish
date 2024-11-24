@@ -1,5 +1,6 @@
+# ln ~/.config/fish/functions/fish_prompt.fish
 # vim: set noet:
-#
+
 # Set the default prompt command.
 
 function fish_prompt --description "Write out the prompt"
