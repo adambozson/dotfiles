@@ -11,7 +11,7 @@ done
 
 __help () {
   cat << EOF
-Usage: ./ln.sh [-v] <command>
+Usage: ./ln.sh [-v] <command> [path_prefix]
 
   Commands:
     clean  - remove all links
@@ -21,6 +21,10 @@ Usage: ./ln.sh [-v] <command>
 
   Options:
     -v     - verbose (show creating/removing links)
+
+  Arguments:
+    path_prefix - optional path to limit which files to process
+                 (default: current directory)
 
 EOF
 }
@@ -57,36 +61,60 @@ __show () {
 export -f __show
 
 __ls () {
-  find $(dirname $0) \
+  local search_prefix="${1:-}"
+  local script_dir="$(cd "$(dirname "$0")" && pwd)"
+  
+  if [ -n "$search_prefix" ]; then
+    # If prefix doesn't start with /, assume it's relative to script directory
+    if [[ "$search_prefix" != /* ]]; then
+      search_prefix="$script_dir/$search_prefix"
+    fi
+  fi
+  
+  find "$script_dir" \
     -type f ! -path '*.git/*' \
     | xargs -I {} awk 'NR == 1 && $2 == "ln" { print FILENAME " " $3 }' {} \
-    | sed "s|^./|$(pwd)/|;s|~|$HOME|"
+    | sed "s|^./|$(pwd)/|;s|~|$HOME|" \
+    | while read -r src dest; do
+        if [ -z "$search_prefix" ] || [[ "$src" == "$search_prefix"* ]]; then
+          echo "$src $dest"
+        fi
+      done
 }
 
 clean () {
-  __ls | awk '{system("__rm " $2)}'
+  __ls "$1" | awk '{system("__rm " $2)}'
 }
 
 link () {
-  __ls | awk '{system("__ln " $1 " " $2)}'
+  __ls "$1" | awk '{system("__ln " $1 " " $2)}'
 }
 
 list () {
-  __ls | awk '{system("__show " $1 " " $2)}' | column -t -s " "
+  __ls "$1" | awk '{system("__show " $1 " " $2)}' | column -t -s " "
 }
 
 update () {
-  git diff HEAD~ | awk '/\-\S*\s+ln/ {
-    if(prevLine ~ /@@ -1/) {
-      system("__rm " $3)
-    }
-  } { prevLine=$0 }'
+  local path_prefix="${1:-.}"
+  
+  git diff HEAD~ | grep "^[-+].*ln" | while read line; do
+    if [[ $line =~ ^-.*\ ln\ (.*)$ ]]; then
+      file_path="${BASH_REMATCH[1]}"
+      if [ -z "$path_prefix" ] || [[ "$file_path" == "$path_prefix"* ]]; then
+        __rm "$file_path"
+      fi
+    fi
+  done
 
-  link
+  link "$path_prefix"
 }
 
-if [[ $(type -t $1) == function ]]; then
-  $1
+# Get the command and remove it from the arguments
+cmd=$1
+shift
+
+if [[ $(type -t $cmd) == function ]]; then
+  $cmd "$@"
 else
   __help
   exit 1
