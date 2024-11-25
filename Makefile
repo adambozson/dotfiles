@@ -1,56 +1,45 @@
-all-mac: install-fish install-git-mac install-gpg install-htop install-hushlogin install-vim
+all-mac: fish git-mac gpg htop hushlogin vim
+clean-all: clean-fish clean-git clean-gpg clean-htop clean-hushlogin clean-vim
 
 fish/completions/kubectl.fish:
 	$(MAKE) -C fish/completions
 
-.PHONY: install-fish
-install-fish: fish/completions/kubectl.fish
-	mkdir -p ~/.config/fish
-	cp -r fish/completions fish/functions fish/conf.d fish/config.fish ~/.config/fish/
+fish:
+	./ln.sh -v link fish/
 
-.PHONY: uninstall-fish
-uninstall-fish:
-	rm -rf ~/.config/fish
+clean-fish:
+	./ln.sh -v clean fish/
 
-.PHONY: install-git-mac
-install-git-mac:
-	cp git/config.mac ~/.gitconfig
+git-mac:
+	./ln.sh -v link git/config.mac
 
-.PHONY: uninstall-git
-uninstall-git:
-	rm ~/.gitconfig
+clean-git:
+	./ln.sh -v clean git/
 
-.PHONY: install-gpg
-install-gpg:
-	mkdir -p ~/.gnupg
-	cp gpg/*.conf ~/.gnupg/
+gpg:
+	./ln.sh -v link gpg/
 	chmod 700 ~/.gnupg
 	gpgconf --kill gpg-agent
 
-.PHONY: uninstall-gpg
-	rm -rf ~/.gnupg
+clean-gpg:
+	./ln.sh -v clean gpg/
 
-.PHONY: install-htop
-install-htop:
-	mkdir -p ~/.config/htop
-	cp htop/htoprc ~/.config/htop/htoprc
+htop:
+	./ln.sh -v link htop/
 
-.PHONY: uninstall-htop
-uninstall-htop:
-	rm ~/.config/htop/htoprc
+clean-htop:
+	./ln.sh -v clean htop/
 
-.PHONY: install-hushlogin
-install-hushlogin:
-	cp .hushlogin ~/.hushlogin
+hushlogin:
+	./ln.sh -v link .hushlogin
 
-.PHONY: uninstall-hushlogin
-uninstall-hushlogin:
-	rm ~/.hushlogin
+clean-hushlogin:
+	./ln.sh -v clean .hushlogin
 
-.PHONY: install-vim
-install-vim:
-	cp vim/vimrc ~/.vimrc
+vim:
+	./ln.sh -v link vim/
 
-.PHONY: uninstall-vim
-uninstall-vim:
-	rm ~/.vimrc
+clean-vim:
+	./ln.sh -v clean vim/
+
+.PHONY: all-mac clean-all fish clean-fish git-mac clean-git gpg clean-gpg htop clean-htop hushlogin clean-hushlogin vim
